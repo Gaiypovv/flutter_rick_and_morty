@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         primaryColor: Colors.black,
+        fontFamily: 'Georgia',
       ),
       home: HomePage(title: 'Rick and Morty'),
     );
