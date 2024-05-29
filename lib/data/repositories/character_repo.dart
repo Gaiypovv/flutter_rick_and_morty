@@ -7,9 +7,13 @@ class CharacterRepo {
   final url = 'https://rickandmortyapi.com/api/character';
 
   Future<Character> getCharacter(int page, String name) async {
-    var response = await http.get(Uri.parse(url + '?page=$page&name=$name'));
+    try {
+      var response = await http.get(Uri.parse(url + '?page=$page&name=$name'));
 
-    var jsonResult = json.decode(response.body);
-    return Character.fromJson(jsonResult);
+      var jsonResult = json.decode(response.body);
+      return Character.fromJson(jsonResult);
+    } catch (error) {
+      throw Exception(error.toString());
+    }
   }
 }
