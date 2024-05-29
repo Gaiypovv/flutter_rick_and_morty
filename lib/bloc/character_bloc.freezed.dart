@@ -244,18 +244,21 @@ mixin _$CharacterState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(Character characterLoaded) loaded,
+    required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(Character characterLoaded)? loaded,
+    TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(Character characterLoaded)? loaded,
+    TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -263,18 +266,21 @@ mixin _$CharacterState {
   TResult map<TResult extends Object?>({
     required TResult Function(CharacterStateLoading value) loading,
     required TResult Function(CharacterStateLoading value) loaded,
+    required TResult Function(CharacterStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CharacterStateLoading value)? loading,
     TResult? Function(CharacterStateLoading value)? loaded,
+    TResult? Function(CharacterStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CharacterStateLoading value)? loading,
     TResult Function(CharacterStateLoading value)? loaded,
+    TResult Function(CharacterStateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -340,6 +346,7 @@ class _$CharacterStateLoadingImpl implements CharacterStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(Character characterLoaded) loaded,
+    required TResult Function() error,
   }) {
     return loading();
   }
@@ -349,6 +356,7 @@ class _$CharacterStateLoadingImpl implements CharacterStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(Character characterLoaded)? loaded,
+    TResult? Function()? error,
   }) {
     return loading?.call();
   }
@@ -358,6 +366,7 @@ class _$CharacterStateLoadingImpl implements CharacterStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(Character characterLoaded)? loaded,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -371,6 +380,7 @@ class _$CharacterStateLoadingImpl implements CharacterStateLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(CharacterStateLoading value) loading,
     required TResult Function(CharacterStateLoading value) loaded,
+    required TResult Function(CharacterStateError value) error,
   }) {
     return loading(this);
   }
@@ -380,6 +390,7 @@ class _$CharacterStateLoadingImpl implements CharacterStateLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CharacterStateLoading value)? loading,
     TResult? Function(CharacterStateLoading value)? loaded,
+    TResult? Function(CharacterStateError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -389,6 +400,7 @@ class _$CharacterStateLoadingImpl implements CharacterStateLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CharacterStateLoading value)? loading,
     TResult Function(CharacterStateLoading value)? loaded,
+    TResult Function(CharacterStateError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -481,6 +493,7 @@ class _$CharacterStateLoadingImpl implements CharacterStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(Character characterLoaded) loaded,
+    required TResult Function() error,
   }) {
     return loaded(characterLoaded);
   }
@@ -490,6 +503,7 @@ class _$CharacterStateLoadingImpl implements CharacterStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(Character characterLoaded)? loaded,
+    TResult? Function()? error,
   }) {
     return loaded?.call(characterLoaded);
   }
@@ -499,6 +513,7 @@ class _$CharacterStateLoadingImpl implements CharacterStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(Character characterLoaded)? loaded,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -512,6 +527,7 @@ class _$CharacterStateLoadingImpl implements CharacterStateLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(CharacterStateLoading value) loading,
     required TResult Function(CharacterStateLoading value) loaded,
+    required TResult Function(CharacterStateError value) error,
   }) {
     return loaded(this);
   }
@@ -521,6 +537,7 @@ class _$CharacterStateLoadingImpl implements CharacterStateLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CharacterStateLoading value)? loading,
     TResult? Function(CharacterStateLoading value)? loaded,
+    TResult? Function(CharacterStateError value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -530,6 +547,7 @@ class _$CharacterStateLoadingImpl implements CharacterStateLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CharacterStateLoading value)? loading,
     TResult Function(CharacterStateLoading value)? loaded,
+    TResult Function(CharacterStateError value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -547,4 +565,113 @@ abstract class CharacterStateLoading implements CharacterState {
   @JsonKey(ignore: true)
   _$$CharacterStateLoadingImplCopyWith<_$CharacterStateLoadingImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CharacterStateErrorImplCopyWith<$Res> {
+  factory _$$CharacterStateErrorImplCopyWith(_$CharacterStateErrorImpl value,
+          $Res Function(_$CharacterStateErrorImpl) then) =
+      __$$CharacterStateErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CharacterStateErrorImplCopyWithImpl<$Res>
+    extends _$CharacterStateCopyWithImpl<$Res, _$CharacterStateErrorImpl>
+    implements _$$CharacterStateErrorImplCopyWith<$Res> {
+  __$$CharacterStateErrorImplCopyWithImpl(_$CharacterStateErrorImpl _value,
+      $Res Function(_$CharacterStateErrorImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CharacterStateErrorImpl implements CharacterStateError {
+  const _$CharacterStateErrorImpl();
+
+  @override
+  String toString() {
+    return 'CharacterState.error()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CharacterStateErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(Character characterLoaded) loaded,
+    required TResult Function() error,
+  }) {
+    return error();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(Character characterLoaded)? loaded,
+    TResult? Function()? error,
+  }) {
+    return error?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(Character characterLoaded)? loaded,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CharacterStateLoading value) loading,
+    required TResult Function(CharacterStateLoading value) loaded,
+    required TResult Function(CharacterStateError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CharacterStateLoading value)? loading,
+    TResult? Function(CharacterStateLoading value)? loaded,
+    TResult? Function(CharacterStateError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CharacterStateLoading value)? loading,
+    TResult Function(CharacterStateLoading value)? loaded,
+    TResult Function(CharacterStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CharacterStateError implements CharacterState {
+  const factory CharacterStateError() = _$CharacterStateErrorImpl;
 }
