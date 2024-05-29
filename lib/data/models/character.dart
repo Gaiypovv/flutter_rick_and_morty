@@ -10,7 +10,7 @@ class Character with _$Character {
     required List<Results> results,
   }) = _Character;
   factory Character.fromJson(Map<String, dynamic> json) =>
-      _$CharacterfromJson(json);
+      _$CharacterFromJson(json);
 }
 
 @freezed
@@ -34,5 +34,5 @@ class Results with _$Results {
       required String gender,
       required String image}) = _Results;
   factory Results.fromJson(Map<String, dynamic> json) =>
-      _$ResultsfromJson(json);
+      _$ResultsFromJson(json);
 }
