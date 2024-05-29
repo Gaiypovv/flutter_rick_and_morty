@@ -1,13 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-part 'charachter.freezed.dart';
-part 'charachter.g.dart';
+part 'character.freezed.dart';
+part 'character.g.dart';
 
 @freezed
-class Character with _$Charachter {
+class Character with _$Character {
   const factory Character({
+    required Info info,
     required List<Results> results,
-  }) = Charachter;
+  }) = _Character;
   factory Character.fromJson(Map<String, dynamic> json) =>
       _$CharacterfromJson(json);
 }
