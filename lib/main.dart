@@ -11,6 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Rick and Morty',
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primaryColor: Colors.black,
+      ),
       home: HomePage(title: 'Rick and Morty'),
     );
   }
