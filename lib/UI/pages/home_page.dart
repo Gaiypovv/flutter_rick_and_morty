@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rick_and_morty/bloc/character_bloc.dart';
 import 'package:flutter_rick_and_morty/data/repositories/character_repo.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,6 +19,10 @@ class HomePage extends StatelessWidget {
           title,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
+      ),
+      body: BlocProvider(
+        create: (context) => CharacterBloc(characterRepo: repository),
+        child: const SearchPage(),
       ),
     );
   }
