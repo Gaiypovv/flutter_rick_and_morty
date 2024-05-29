@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rick_and_morty/UI/pages/search_page.dart';
 import 'package:flutter_rick_and_morty/bloc/character_bloc.dart';
 import 'package:flutter_rick_and_morty/data/repositories/character_repo.dart';
 
