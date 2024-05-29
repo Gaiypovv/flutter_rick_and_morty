@@ -8,7 +8,8 @@ class Character with _$Charachter {
   const factory Character({
     required List<Results> results,
   }) = Charachter;
-  factory Character.fromJson(Map<String, dynamic> json) => _$InfromJson(json);
+  factory Character.fromJson(Map<String, dynamic> json) =>
+      _$CharacterfromJson(json);
 }
 
 @freezed
@@ -19,6 +20,7 @@ class Info with _$Info {
     String? next,
     String? prev,
   }) = _Info;
+  factory Info.fromJson(Map<String, dynamic> json) => _$InfoFromJson(json);
 }
 
 @freezed
@@ -30,4 +32,6 @@ class Results with _$Results {
       required String species,
       required String gender,
       required String image}) = _Results;
+  factory Results.fromJson(Map<String, dynamic> json) =>
+      _$ResultsfromJson(json);
 }
