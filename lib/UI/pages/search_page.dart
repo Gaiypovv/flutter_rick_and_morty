@@ -19,14 +19,12 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget build(BuildContext context) {
-    return BlocBuilder(
-      builder: (context, state) {
-        if (state is CharacterStateLoading) {
-          // что делает
-        } else if (state is CharacterStateLoaded) {
-          // что делает
-        }
+    final state = context.watch<CharacterBloc>().state;
+    return state.when(
+      loading: loading: () {
+        
       },
-    );
+      loaded: loaded,
+      error: error)
   }
 }
