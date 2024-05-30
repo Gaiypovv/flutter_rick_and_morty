@@ -77,13 +77,27 @@ class _SearchPageState extends State<SearchPage> {
               _currentCharacter = characterLoaded;
               _currentResults = _currentCharacter.results;
               return _currentResults.isNotEmpty
-                  ? Text('$_currentResults')
+                  ? _customListView(_currentResults)
                   : const SizedBox();
             },
             error: () => const Text('Nothing found...'),
           ),
         ),
       ],
+    );
+  }
+
+  Widget _customListView(List<Results> currentResults) {
+    return ListView.separated(
+      itemCount: currentResults.length,
+      separatorBuilder: (_, index) => const SizedBox(height: 5),
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        final result = currentResults[index];
+        return ListTile(
+          title: Text(result.name, style: const TextStyle(color: Colors.white)),
+        );
+      },
     );
   }
 }
