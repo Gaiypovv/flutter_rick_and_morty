@@ -51,7 +51,8 @@ class _SearchPageState extends State<SearchPage> {
             ),
             onChanged: (value) {
               _currentPage = 1;
-              
+              _currentResults = [];
+              _currentSearchStr = value;
               context
                   .read<CharacterBloc>()
                   .add(CharacterEvent.fetch(name: value, page: 1));
