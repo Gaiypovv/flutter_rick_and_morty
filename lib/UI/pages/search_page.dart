@@ -94,8 +94,13 @@ class _SearchPageState extends State<SearchPage> {
       shrinkWrap: true,
       itemBuilder: (context, index) {
         final result = currentResults[index];
-        return ListTile(
-          title: Text(result.name, style: const TextStyle(color: Colors.white)),
+        return Padding(
+          padding:
+              const EdgeInsets.only(right: 16, left: 16, top: 3, bottom: 3),
+          child: ListTile(
+            title:
+                Text(result.name, style: const TextStyle(color: Colors.white)),
+          ),
         );
       },
     );
