@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rick_and_morty/bloc/character_bloc.dart';
+import 'package:flutter_rick_and_morty/data/models/character.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -10,6 +11,11 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  late Character _currentCharacter;
+  List<Results>_currentResults = [];
+  int _currentPage = 1,
+  String _currentSearchStr = '';
+
   @override
   void initState() {
     context
