@@ -12,16 +12,16 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   late Character _currentCharacter;
-  List<Results>_currentResults = [];
-  int _currentPage = 1,
+  List<Results> _currentResults = [];
+  int _currentPage = 1;
   String _currentSearchStr = '';
 
   @override
   void initState() {
     if (_currentResults.isEmpty) {
- context
-        .read<CharacterBloc>()
-        .add(const CharacterEvent.fetch(name: '', page: 1));
+      context
+          .read<CharacterBloc>()
+          .add(const CharacterEvent.fetch(name: '', page: 1));
     }
     super.initState();
   }
@@ -55,25 +55,33 @@ class _SearchPageState extends State<SearchPage> {
               _currentSearchStr = value;
               context
                   .read<CharacterBloc>()
-                  .add(CharacterEvent.fetch(name: value, page: 1));
+                  .add(CharacterEvent.fetch(name: value, page: _currentPage));
             },
           ),
         ),
-        state.when(
-          loading: () {
-            return const Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularProgressIndicator(strokeWidth: 2),
-                  SizedBox(width: 10),
-                  Text('Loading...'),
-                ],
-              ),
-            );
-          },
-          loaded: (characterLoaded) => Text('${characterLoaded.info}'),
-          error: () => const Text('Nothing found...'),
+        Expanded(
+          child: state.when(
+            loading: () {
+              return const Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircularProgressIndicator(strokeWidth: 2),
+                    SizedBox(width: 10),
+                    Text('Loading...'),
+                  ],
+                ),
+              );
+            },
+            loaded: (characterLoaded) {
+              _currentCharacter = characterLoaded;
+              _currentResults = _currentCharacter.results;
+              return _currentResults.isNotEmpty
+                  ? Text('$_currentResults')
+                  : const SizedBox();
+            },
+            error: () => const Text('Nothing found...'),
+          ),
         ),
       ],
     );
