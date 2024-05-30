@@ -37,6 +37,52 @@ class CustomListTile extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        //spacies
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Spacies:',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                          const SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            result.species,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          )
+                        ],
+                      ),
+                      Column(
+                        // gender
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Gender:',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                          const SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            result.gender,
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                )
               ],
             )
           ],
