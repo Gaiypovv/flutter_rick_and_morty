@@ -99,7 +99,7 @@ class _SearchPageState extends State<SearchPage> {
           padding:
               const EdgeInsets.only(right: 16, left: 16, top: 3, bottom: 3),
           child: CustomListTile(
-            results: result,
+            result: result,
           ),
         );
       },
