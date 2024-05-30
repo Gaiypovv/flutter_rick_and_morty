@@ -7,10 +7,16 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        result.name,
-        style: const TextStyle(color: Colors.white),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        height: MediaQuery.of(context).size.height / 7,
+        color: const Color.fromRGBO(86, 86, 86, 0.8),
+        child: Row(
+          children: [
+
+          ],
+        ),
       ),
     );
   }
