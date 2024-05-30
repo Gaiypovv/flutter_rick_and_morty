@@ -34,7 +34,7 @@ class _SearchPageState extends State<SearchPage> {
           ),
         );
       },
-      loaded: loaded,
+      loaded: (characterLoaded) => Text('${characterLoaded.info}'),
       error: () => const Text('Nothing found...'),
     );
   }
