@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rick_and_morty/UI/widgets/custom_list_tile.dart';
 import 'package:flutter_rick_and_morty/bloc/character_bloc.dart';
 import 'package:flutter_rick_and_morty/data/models/character.dart';
 
@@ -97,9 +98,8 @@ class _SearchPageState extends State<SearchPage> {
         return Padding(
           padding:
               const EdgeInsets.only(right: 16, left: 16, top: 3, bottom: 3),
-          child: ListTile(
-            title:
-                Text(result.name, style: const TextStyle(color: Colors.white)),
+          child: CustomListTile(
+            results: result,
           ),
         );
       },
