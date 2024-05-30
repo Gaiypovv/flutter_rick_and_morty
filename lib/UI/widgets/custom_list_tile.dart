@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rick_and_morty/data/models/character.dart';
 
@@ -13,7 +14,15 @@ class CustomListTile extends StatelessWidget {
         height: MediaQuery.of(context).size.height / 7,
         color: const Color.fromRGBO(86, 86, 86, 0.8),
         child: Row(
-          children: [],
+          children: [
+            CachedNetworkImage(
+              imageUrl: result.image,
+              placeholder: (context, url) => const CircularProgressIndicator(
+                color: Colors.grey,
+              ),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
+          ],
         ),
       ),
     );
