@@ -13,9 +13,7 @@ class CustomListTile extends StatelessWidget {
         height: MediaQuery.of(context).size.height / 7,
         color: const Color.fromRGBO(86, 86, 86, 0.8),
         child: Row(
-          children: [
-
-          ],
+          children: [],
         ),
       ),
     );
