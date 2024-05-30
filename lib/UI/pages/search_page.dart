@@ -18,9 +18,11 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   void initState() {
-    context
+    if (_currentResults.isEmpty) {
+ context
         .read<CharacterBloc>()
         .add(const CharacterEvent.fetch(name: '', page: 1));
+    }
     super.initState();
   }
 
