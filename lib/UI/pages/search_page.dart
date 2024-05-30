@@ -25,24 +25,28 @@ class _SearchPageState extends State<SearchPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        TextField(
-          style: const TextStyle(color: Colors.white),
-          cursorColor: Colors.white,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: const Color.fromRGBO(86, 86, 86, 0.8),
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-                borderSide: BorderSide.none),
-            prefixIcon: const Icon(Icons.search, color: Colors.white),
-            hintText: 'Search Name',
-            hintStyle: const TextStyle(color: Colors.white),
+        Padding(
+          padding:
+              const EdgeInsets.only(top: 15, bottom: 1, left: 16, right: 16),
+          child: TextField(
+            style: const TextStyle(color: Colors.white),
+            cursorColor: Colors.white,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: const Color.fromRGBO(86, 86, 86, 0.8),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide.none),
+              prefixIcon: const Icon(Icons.search, color: Colors.white),
+              hintText: 'Search Name',
+              hintStyle: const TextStyle(color: Colors.white),
+            ),
+            onChanged: (value) {
+              context
+                  .read<CharacterBloc>()
+                  .add(CharacterEvent.fetch(name: value, page: 1));
+            },
           ),
-          onChanged: (value) {
-            context
-                .read<CharacterBloc>()
-                .add(CharacterEvent.fetch(name: value, page: 1));
-          },
         ),
         state.when(
           loading: () {
