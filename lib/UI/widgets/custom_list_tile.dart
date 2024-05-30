@@ -14,6 +14,7 @@ class CustomListTile extends StatelessWidget {
         height: MediaQuery.of(context).size.height / 7,
         color: const Color.fromRGBO(86, 86, 86, 0.8),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CachedNetworkImage(
               imageUrl: result.image,
@@ -23,6 +24,8 @@ class CustomListTile extends StatelessWidget {
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                     width: MediaQuery.of(context).size.width / 1.9,
@@ -33,7 +36,7 @@ class CustomListTile extends StatelessWidget {
                     )),
                 const SizedBox(
                   height: 10,
-                )
+                ),
               ],
             )
           ],
