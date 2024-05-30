@@ -21,21 +21,39 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     final state = context.watch<CharacterBloc>().state;
 
-    return state.when(
-      loading: () {
-        return const Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircularProgressIndicator(strokeWidth: 2),
-              SizedBox(width: 10),
-              Text('Loading...'),
-            ],
+    return Column(
+      children: [
+        TextField(
+          style: const TextStyle(color: Colors.white),
+          cursorColor: Colors.white,
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: const Color.fromRGBO(86, 86, 86, 0.8),
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: BorderSide.none),
+            prefixIcon: const Icon(Icons.search, color: Colors.white),
+            hintText: 'Search Name',
+            hintStyle: const TextStyle(color: Colors.white),
           ),
-        );
-      },
-      loaded: (characterLoaded) => Text('${characterLoaded.info}'),
-      error: () => const Text('Nothing found...'),
+        ),
+        state.when(
+          loading: () {
+            return const Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator(strokeWidth: 2),
+                  SizedBox(width: 10),
+                  Text('Loading...'),
+                ],
+              ),
+            );
+          },
+          loaded: (characterLoaded) => Text('${characterLoaded.info}'),
+          error: () => const Text('Nothing found...'),
+        ),
+      ],
     );
   }
 }
