@@ -50,6 +50,8 @@ class _SearchPageState extends State<SearchPage> {
               hintStyle: const TextStyle(color: Colors.white),
             ),
             onChanged: (value) {
+              _currentPage = 1;
+              
               context
                   .read<CharacterBloc>()
                   .add(CharacterEvent.fetch(name: value, page: 1));
