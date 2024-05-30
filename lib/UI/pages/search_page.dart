@@ -22,6 +22,8 @@ class _SearchPageState extends State<SearchPage> {
     final state = context.watch<CharacterBloc>().state;
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         TextField(
           style: const TextStyle(color: Colors.white),
@@ -36,6 +38,11 @@ class _SearchPageState extends State<SearchPage> {
             hintText: 'Search Name',
             hintStyle: const TextStyle(color: Colors.white),
           ),
+          onChanged: (value) {
+            context
+                .read<CharacterBloc>()
+                .add(CharacterEvent.fetch(name: value, page: 1));
+          },
         ),
         state.when(
           loading: () {
