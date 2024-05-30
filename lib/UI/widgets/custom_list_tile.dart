@@ -22,6 +22,20 @@ class CustomListTile extends StatelessWidget {
               ),
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
+            Column(
+              children: [
+                SizedBox(
+                    width: MediaQuery.of(context).size.width / 1.9,
+                    child: Text(
+                      result.name,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    )),
+                const SizedBox(
+                  height: 10,
+                )
+              ],
+            )
           ],
         ),
       ),
