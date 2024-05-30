@@ -20,11 +20,21 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget build(BuildContext context) {
     final state = context.watch<CharacterBloc>().state;
+
     return state.when(
-      loading: loading: () {
-        
-      },
-      loaded: loaded,
-      error: error)
+        loading: () {
+          return const Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(strokeWidth: 2),
+                SizedBox(width: 10),
+                Text('Loading...'),
+              ],
+            ),
+          );
+        },
+        loaded: loaded,
+        error: error);
   }
 }
