@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rick_and_morty/UI/widgets/custom_list_tile.dart';
 import 'package:flutter_rick_and_morty/bloc/character_bloc.dart';
 import 'package:flutter_rick_and_morty/data/models/character.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -16,6 +17,9 @@ class _SearchPageState extends State<SearchPage> {
   List<Results> _currentResults = [];
   int _currentPage = 1;
   String _currentSearchStr = '';
+
+  final RefreshController refreshController = RefreshController();
+  bool _isPagination = false;
 
   @override
   void initState() {
@@ -89,20 +93,35 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget _customListView(List<Results> currentResults) {
-    return ListView.separated(
-      itemCount: currentResults.length,
-      separatorBuilder: (_, index) => const SizedBox(height: 5),
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        final result = currentResults[index];
-        return Padding(
-          padding:
-              const EdgeInsets.only(right: 16, left: 16, top: 3, bottom: 3),
-          child: CustomListTile(
-            result: result,
-          ),
-        );
+    return SmartRefresher(
+      controller: refreshController,
+      enablePullUp: true,
+      enablePullDown: false,
+      onLoading: () {
+        _isPagination = true;
+        _currentPage++;
+        if (_currentPage <= _currentCharacter.info.pages) {
+          context.read<CharacterBloc>().add(CharacterEvent.fetch(
+              name: _currentSearchStr, page: _currentPage));
+        } else {
+          refreshController.loadNoData();
+        }
       },
+      child: ListView.separated(
+        itemCount: currentResults.length,
+        separatorBuilder: (_, index) => const SizedBox(height: 5),
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          final result = currentResults[index];
+          return Padding(
+            padding:
+                const EdgeInsets.only(right: 16, left: 16, top: 3, bottom: 3),
+            child: CustomListTile(
+              result: result,
+            ),
+          );
+        },
+      ),
     );
   }
 }
