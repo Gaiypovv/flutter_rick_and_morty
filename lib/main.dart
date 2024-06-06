@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rick_and_morty/UI/pages/home_page.dart';
+import 'package:flutter_rick_and_morty/bloc_observable.dart';
 
 void main() {
-  runApp(const MyApp());
+  // ignore: deprecated_member_use
+  BlocOverrides.runZoned(
+    () => runApp(const MyApp()),
+    blocObserver: CharacterBlocObservable(),
+  );
 }
 
 class MyApp extends StatelessWidget {
