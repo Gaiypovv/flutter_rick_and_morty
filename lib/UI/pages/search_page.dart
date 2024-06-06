@@ -67,20 +67,31 @@ class _SearchPageState extends State<SearchPage> {
         Expanded(
           child: state.when(
             loading: () {
-              return const Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircularProgressIndicator(strokeWidth: 2),
-                    SizedBox(width: 10),
-                    Text('Loading...'),
-                  ],
-                ),
-              );
+              if (!_isPagination) {
+                return const Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(strokeWidth: 2),
+                      SizedBox(width: 10),
+                      Text('Loading...'),
+                    ],
+                  ),
+                );
+              } else {
+                return _customListView(_currentResults);
+              }
             },
             loaded: (characterLoaded) {
               _currentCharacter = characterLoaded;
-              _currentResults = _currentCharacter.results;
+              if (_isPagination) {
+                _currentResults = List.from(_currentResults);
+                _currentResults.addAll(_currentCharacter.results);
+                refreshController.loadComplete();
+                _isPagination = false;
+              } else {
+                _currentResults = _currentCharacter.results;
+              }
               return _currentResults.isNotEmpty
                   ? _customListView(_currentResults)
                   : const SizedBox();
